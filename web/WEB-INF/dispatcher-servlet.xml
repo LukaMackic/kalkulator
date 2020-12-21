@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    
+    <mvc:annotation-driven />
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+  
+    <bean class="controller.MainController" id="mainController"/>
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+
+                 <prop key="oblik.htm">mainController</prop>
+                 <prop key="oblikRegistracije.htm">mainController</prop>
+                 <prop key="djelatnostiDOO.htm.htm">mainController</prop>
+                 <prop key="djelatnosti.htm">mainController</prop>
+               <prop key="djelatnostiDOO.htm.htm">mainController</prop>
+                 <prop key="zaposleniDOO.htm">mainController</prop>
+                 <prop key="workersdoo.htm">mainController</prop>
+              <prop key="prihodiDOO.htm">mainController</prop>
+                 <prop key="prihodidoo.htm">mainController</prop>
+                  <prop key="pregledDOO.htm">mainController</prop>
+                 <prop key="pregleddoo.htm">mainController</prop>
+                <prop key="index.htm">indexController</prop>
+               
+               
+               
+               
+                <prop key="gotodjelatnostiSP.htm">mainController</prop>
+                <prop key="workersdoo.htm">mainController</prop>
+                <prop key="testworkers.htm">mainController</prop>
+                  <prop key="test.htm">mainController</prop>
+                                <prop key="radnicisp.htm">mainController</prop>
+               
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+</beans>
