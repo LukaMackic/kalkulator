@@ -172,7 +172,7 @@ nav ul li a {
 
 .navbutton:after {
     color: #000;
-    content: url("/img/ic_arrow_forward_24px.png");
+    content: url("img/ic_arrow_forward_24px.png");
     display: inline-block;
     height: 2px;
     line-height: 25px;
@@ -480,13 +480,79 @@ tbody {
   }
 
 
+.preuzmi{
+    margin: 0 auto;
+    width: 705px;
+}
 
+    #button-preuzmi{
+        background: url("img/ic_file_download_24px.svg") 30px center   no-repeat;
+        background-color:  #FFF200;
+        color:#000;
+        font-size: 20px !important;
+        text-align: center;
+        border-radius: 33px;
+        width:230px;
+        height: 61px;
+        margin: 20px auto;
+        font-size: 16px;
+        font-weight: 600;
+        border:none;
+        cursor: pointer;
+        display:inline-block;
+        margin-bottom: 5rem;
+        padding-left: 20px;
+    }
+    #button-posalji{
+        background: url("img/ic_email_24px.svg") 30px center   no-repeat;
+        background-color:  #FFF200;
+        color:#000;
+        font-size: 20px !important;
+        text-align: center;
+        border-radius: 33px;
+        width:250px;
+        height: 61px;
+        margin: 20px auto;
+        font-size: 16px;
+        font-weight: 600;
+        border:none;
+        cursor: pointer;
+        display:inline-block;
+        margin-bottom: 5rem;
+        padding-left: 25px;
+    }
+    #button-stampanje{
+        background: url("img/ic_local_printshop_24px.svg") 30px center   no-repeat;
+        background-color:  #FFF200;
+        color:#000;
+        font-size: 20px !important;
+        text-align: center;
+        border-radius: 33px;
+        width:200px;
+        height: 61px;
+        margin: 20px auto;
+        font-size: 16px;
+        font-weight: 600;
+        border:none;
+        cursor: pointer;
+        display:inline-block;
+        margin-bottom: 5rem;
+        padding-left: 20px;
+    }
 
 
 
   @media screen and (max-width: 1024px) {
     .over {
         width: 80%;
+    }
+    .preuzmi{
+        width: 300px;
+    }
+    #button-preuzmi, #button-posalji, #button-stampanje {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 1rem;
     }
     
 }

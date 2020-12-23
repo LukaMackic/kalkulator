@@ -4,8 +4,6 @@ package controller;
 import java.util.ArrayList;
 import model.Model_doo;
 import model.Model_sp;
-import static model.Model_sp.selectOpisSP;
-import static model.Model_sp.selectPodrucjeSP;
 
 
 public class Metode {
@@ -36,26 +34,14 @@ public class Metode {
     {
         return brutoPlata*32.8/100;
     }
-    public static double PlataPreOporezivanja(double brutoPlata)
-    {
-        return brutoPlata*0.672;
-    }
+ 
     public static double porezNaLicniDohodak(double  brutoPlata)
     {
         return  (brutoPlata*0.672-500)*0.1;
     }
     
     
-    public static void main(String[] args) {
-       
-        
-          ArrayList<Model_sp> sp_collection = selectPodrucjeSP("A");
-        
-         for(int i=0;i<sp_collection.size();i++)
-         {
-             System.out.println(sp_collection.get(i).getOpis());
-         }
-    }
+
     
     public static ArrayList<String> slanjeDOO( ArrayList<Model_doo> lista){
        ArrayList<String> pomocna = new ArrayList();
@@ -66,6 +52,29 @@ public class Metode {
         {
             String str="";
             str=str.concat(lista.get(i).getOpis_djelatnosti());
+            str = str.concat(" (");
+            str = str.concat(lista.get(i).getSifra());
+            str = str.concat(")");
+            str = str.concat(";");
+            pomocna.add(str);
+        }
+        string = pomocna.get(pomocna.size()-1);
+        string =  string.substring(0, string.length() - 1);
+        pomocna.remove(pomocna.size()-1);
+        pomocna.add(string);
+        return pomocna;
+    
+    }
+    
+     public static ArrayList<String> slanjeSP( ArrayList<Model_sp> lista){
+       ArrayList<String> pomocna = new ArrayList();
+       
+        String string = "";
+         
+             for(int i=0;i<lista.size();i++)
+        {
+            String str="";
+            str=str.concat(lista.get(i).getOpis());
             str = str.concat(" (");
             str = str.concat(lista.get(i).getSifra());
             str = str.concat(")");

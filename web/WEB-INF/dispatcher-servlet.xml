@@ -38,8 +38,8 @@
                  <prop key="workersdoo.htm">mainController</prop>
               <prop key="prihodiDOO.htm">mainController</prop>
                  <prop key="prihodidoo.htm">mainController</prop>
-                  <prop key="pregledDOO.htm">mainController</prop>
-                 <prop key="pregleddoo.htm">mainController</prop>
+                  <prop key="pregled.htm">mainController</prop>
+                
                 <prop key="index.htm">indexController</prop>
                
                

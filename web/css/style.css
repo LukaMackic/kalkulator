@@ -12,7 +12,7 @@ body {
 }
 @font-face{
     font-family: HelveticaNeue;
-    src: url('fonts/Helvetica_Neue/HelveticaNeue.otf')
+    src: url('../fonts/Helvetica_Neue/HelveticaNeue.otf');
 
 }
 
@@ -169,7 +169,7 @@ nav ul li a {
 
 .navbutton:after {
     color: #000;
-    content: url("img/ic_arrow_forward_24px.png");
+    content: url("../img/ic_arrow_forward_24px.png");
     display: inline-block;
     height: 2px;
     line-height: 25px;
@@ -372,7 +372,7 @@ span {
     overflow: hidden;
 }
 #coat {
-    background-image: url("img/Group_854.svg");
+    background-image: url("../img/Group_854.svg");
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: 58%;
@@ -442,7 +442,7 @@ span {
         margin-bottom: 70px;
     } 
     #header {
-        background-image: url("img/Group_854.svg");
+        background-image: url("../img/Group_854.svg");
         background-repeat: no-repeat;
         background-position: center top;
         background-size: 65%;

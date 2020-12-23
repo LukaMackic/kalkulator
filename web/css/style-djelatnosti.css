@@ -1,6 +1,6 @@
 @font-face{
     font-family: HelveticaNeue;
-    src: url('fonts/Helvetica_Neue/HelveticaNeue.otf')
+    src: url('../fonts/Helvetica_Neue/HelveticaNeue.otf')
 
 }
 * {
@@ -171,11 +171,11 @@ li {
 }
 .navbutton:after {
     color: #000;
-    content: url("img/ic_arrow_forward_24px.png");
+    content: url("../img/ic_arrow_forward_24px.png");
     display: inline-block;
     height: 2px;
     line-height: 25px;
-    margin-left: 10px;
+    margin-left: 0px;
     text-align: center;
     width: 25px;
     -webkit-border-radius: 20px;
@@ -206,7 +206,7 @@ li {
     white-space: nowrap;
 }
 
- nav span {
+span {
     display: inline-block;
     width: 0;
     height: 34px;
@@ -331,7 +331,7 @@ li {
 }
 
 @media(max-width: 768px) {
-    nav span {
+    span {
         display: none;
     }
 

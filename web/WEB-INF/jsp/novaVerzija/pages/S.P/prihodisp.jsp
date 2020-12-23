@@ -1,7 +1,7 @@
 <%-- 
-    Document   : prihodidoo
-    Created on : 18-Dec-2020, 10:07:25
-    Author     : Korisnik
+    Document   : prihodi-sp
+    Created on : Dec 23, 2020, 12:29:01 AM
+    Author     : PC
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,9 +12,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D.O.O/Planirani prihodi</title>
+    <title>S.P/Planirani prihodi</title>
     <link rel="stylesheet" href="css/style-prihodi-doo.css">
-    <style>
+    
+     <style>
         #button-submit {
     background: url("img/ic_arrow_forward_24px\ \(1\).svg") 175px center   no-repeat;
     background-color:  #3EC300;
@@ -34,14 +35,14 @@
     padding-right: 25px;
 }
     </style>
+
     </head>
     
    <body> 
-      
    <!-- Navigation testiranje -->
  <nav>
     <div class="logo">
-        <a href="index.htm" id="logo1">
+        <a href="index.html" id="logo1">
             <picture>
                 <source media="(min-width: 1100px)" srcset="img/smartlogo.png">
                 <source srcset="img/smartlogo-mobile.png">
@@ -77,59 +78,36 @@
         </div>
     
 <div class="opcija">
-<form id="forma" action = "/kalkulator/pregled.htm" method="post">
-    
-<div class="check">
-  <label for="pet" class="labela"> Do 50.000 KM
-      <input class="check2" id="pet" type="radio" name="check" value="do50000" checked>
+<form id="forma" action = "/kalkulator/rezultatSP.htm" method="post">
+  
+ 
+    <div class="check">
+  <label for="jeden" class="labela"> Do 50.000 KM
+   <input class="check2" id="jeden" type="radio" name="check" value="radio1" >
    
    <span class="checkmark"></span>
 </label>
 </div>
     </br>
-    <div class="check">
-  <label for="jedan" class="labela"> Do 500.000 KM
-   <input class="check2" id="jedan" type="radio" name="check" value="do500000" >
-   
-   <span class="checkmark"></span>
-</label>
-</div>
-  </br>
-
-  <div class="check">
-  <label for="dva" class="labela"> Do 2.000.000 KM
-   <input class="check2" id="dva" type="radio" name="check" value="do2000000" >
-   
-   <span class="checkmark"></span>
-</label>
-</div>
-</br>
-
 <div class="check">
-  <label for="tri" class="labela"> Do 8.000.000 KM 
-   <input class="check2" id="tri" type="radio" name="check" value="do8m" c>
+  <label for="dva" class="labela"> Preko 50.000 KM
+   <input class="check2" id="dva" type="radio" name="check" value="radio1" >
    
    <span class="checkmark"></span>
 </label>
 </div>
-</br>
-<div class="check">
-  <label for="cetiri" class="labela"> Preko 8.000.000 KM
-      <input class="check2" id="cetiri" type="radio" name="check" value="preko8m" >
-   
-   <span class="checkmark"></span>
-</label>
-   </div>
+    
+    </br>
+ 
              <input type="hidden" id="radnoVrijeme" name="radnoVrijeme" value ="${radnoVrijeme}"></input>
             <input type="hidden" id="plate" name="plate" value="${plate}"></input>  
             <input type="hidden" id="djelatnost" name="djelatnost" value = "${djelatnost}"></input>
-            <input type="hidden"  name="oblik" value = "doo"></input>
-        
+
+
    <input type="submit" id='button-submit' value="Rezultat">
    
 </form>
 </div>
-    
     
 
    

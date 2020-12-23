@@ -15,7 +15,7 @@ body {
 
 @font-face{
     font-family: HelveticaNeue;
-    src: url('fonts/Helvetica_Neue/HelveticaNeue.otf')
+    src: url('../fonts/Helvetica_Neue/HelveticaNeue.otf')
 
 }
 * {
@@ -169,19 +169,19 @@ nav ul li a {
 li {
 	list-style: none;
 }
-/*.navbutton:after {
+.navbutton:after {
     color: #000;
     content: url("../img/ic_arrow_forward_24px.png");
     display: inline-block;
     height: 2px;
     line-height: 25px;
-    margin-left: 10px;
+    margin-left: 0px;
     text-align: center;
     width: 25px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-}*/
+}
 
 .navbutton:hover {
     -webkit-box-shadow: 0px 0px 7px rgba(112, 112, 112);
