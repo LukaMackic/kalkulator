@@ -15,27 +15,7 @@
     <title>S.P/Planirani prihodi</title>
     <link rel="stylesheet" href="css/style-prihodi-doo.css">
     
-     <style>
-        #button-submit {
-    background: url("img/ic_arrow_forward_24px\ \(1\).svg") 175px center   no-repeat;
-    background-color:  #3EC300;
-    box-shadow: 0px 10px 20px #3EC30080;
-    color:#FFF;
-    font-size: 20px !important;
-    text-align: center;
-    border-radius: 33px;
-    width:280px;
-    height: 61px;
-    margin: 45px auto;
-    font-size: 16px;
-    font-weight: 600;
-    border:none;
-    cursor: pointer;
-    display:block;
-    padding-right: 25px;
-}
-    </style>
-
+     
     </head>
     
    <body> 
@@ -55,9 +35,7 @@
         <p>Kalkulator troškova poslovanja</p>
     </div>
     <ul class="menu">
-        <li><a href="#" class="afterlogo"></a></li>
-        
-        <li><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
+        <li id="slink"><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
