@@ -125,7 +125,7 @@ function ukini() {
     <ul class="menu">
         <li><a href="#" class="afterlogo"></a></li>
     
-        <li><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
+        <li id="slink"><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
