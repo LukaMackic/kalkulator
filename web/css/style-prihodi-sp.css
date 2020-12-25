@@ -76,6 +76,11 @@ nav ul li a {
 }
 
 
+#slink {
+    width:220px;
+    margin-right: 10px;
+}
+
 
 
 @keyframes slideIn {
@@ -170,19 +175,19 @@ nav ul li a {
 li {
 	list-style: none;
 }
-/*.navbutton:after {
+.navbutton:after {
     color: #000;
     content: url("../img/ic_arrow_forward_24px.png");
     display: inline-block;
     height: 2px;
     line-height: 25px;
-    margin-left: 10px;
+   
     text-align: center;
     width: 25px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-}*/
+}
 
 .navbutton:hover {
     -webkit-box-shadow: 0px 0px 7px rgba(112, 112, 112);
@@ -207,7 +212,7 @@ li {
     white-space: nowrap;
 }
 
-span {
+nav span {
     display: inline-block;
     width: 0;
     height: 34px;
@@ -332,7 +337,7 @@ span {
 }
 
 @media(max-width: 768px) {
-    span {
+    nav span {
         display: none;
     }
 
@@ -393,7 +398,7 @@ span {
 .opcija {
     margin:  0px auto;
     width: 415px;
-    margin-bottom: 7rem;
+    margin-bottom: 5rem;
 }
 #forma {
     width:305px;
@@ -441,7 +446,7 @@ span {
     width: 20px;
     background-color: #FFF;
     border-radius: 50%;
-    border:solid 2px rgba(1,1,1,0.54);
+    border:solid 3px rgba(1,1,1,0.54);
     
   }
   
@@ -464,10 +469,10 @@ span {
   }
   
   .labela .checkmark:after {
-    top: 2px;
-    left: 2px;
-    width: 16px;
-    height: 16px;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #3EC300;
   }
@@ -491,6 +496,7 @@ span {
     cursor: pointer;
     display:block;
     padding-right: 25px;
+    margin-bottom: 60px;
 }
 
 
@@ -530,7 +536,8 @@ select:focus {
     margin:0 auto;
     position:absolute;
     width:100%;
-    bottom:0px;
+    
+    
 }
 .footer-list{
     width: 630px;
@@ -541,11 +548,12 @@ select:focus {
     display: inline-block;
     background-color: #FFF200;
     border-radius: 50%;
-    height:30px;
+    height:27px;
     width:30px;
     margin:25px 10px;
-    padding:0;
+    padding-top: 2px;
     font-weight: 700;
+    font-size: 15px;
     
 }
 .footer-list p{
@@ -560,6 +568,7 @@ select:focus {
     height: 10px;
     margin-bottom: 5px;
     margin-left: 5px;
+    display: inline-block;
 }
 
 @media screen and (max-width: 768px) {
@@ -586,4 +595,5 @@ select:focus {
         padding-right:10px;
         line-height: 1.2;
     }
+    
 }
