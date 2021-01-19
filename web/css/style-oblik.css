@@ -76,7 +76,6 @@ nav ul li a {
 
 
 
-
 @keyframes slideIn {
     from {}
 
@@ -124,7 +123,10 @@ nav ul li a {
     transition: all .3s ease;
 
 }
-
+#slink {
+    width:220px;
+    margin-right: 10px;
+}
 .nav-active {
     transform: translateX(0%);
 }
@@ -206,7 +208,7 @@ li {
     white-space: nowrap;
 }
 
-span {
+ nav span {
     display: inline-block;
     width: 0;
     height: 34px;
@@ -255,8 +257,8 @@ span {
     .menu {
         position: fixed;
         right: 0;
-        height: 80vh;
-        top: 11.9vh;
+        height: 40vh;
+        top: 9.9vh;
         background-color: #FFF200;
         display: flex;
         flex-direction: column;
@@ -265,6 +267,9 @@ span {
         transform: translateX(100%);
         transition: transform .5s slide-in;
         font-size: 14px;
+    }
+    #slink {
+        margin-right: -50px!important;
     }
 
     .menu li {
@@ -299,8 +304,8 @@ span {
     .menu {
         position: fixed;
         right: 0;
-        height: 80vh;
-        top: 11.9vh;
+        height: 40vh;
+        top: 10.9vh;
         background-color: #FFF200;
         display: flex;
         flex-direction: column;
@@ -310,7 +315,9 @@ span {
         transition: transform .5s slide-in;
         font-size: 14px;
     }
-
+     #slink {
+        margin-right: -30px !important;
+    }
     .menu li {
         opacity: 0;
     }
@@ -331,7 +338,7 @@ span {
 }
 
 @media(max-width: 768px) {
-    span {
+    nav span {
         display: none;
     }
 
@@ -362,7 +369,6 @@ span {
 
 }
 /* END OF NAVIGATION */
-
 #globus{
     margin-bottom:9rem;
 }
@@ -492,33 +498,49 @@ span {
 
 
 
+
+
 .footer {
     background-color: #222222;
     margin:0 auto;
     position:absolute;
     width:100%;
     bottom:0px;
+    
+    
 }
 .footer-list{
     width: 630px;
     margin:0 auto;
     text-align: center;
 }
+
 .broj{
     display: inline-block;
+    color: #FFF;
     background-color: #8888;
-    color:#FFF;
     border-radius: 50%;
     height:30px;
+    height:27px;
     width:30px;
     margin:25px 10px;
     padding:0;
     font-weight: 300;
-    
+
 }
 .broj p{
+    margin:26px 10px;
+    padding-top: 2px;
     font-weight: 700;
+    font-size: 15px;
+
 }
+
+#active{
+    background-color: #FFF200;
+    color: #000;
+}
+
 .footer-list p{
     color:#FFF;
     display: inline-block;
@@ -533,10 +555,6 @@ span {
     margin-left: 5px;
     display: inline-block;
 }
-#active{
-    background-color: #FFF200;
-    color: #000;
-}
 
 @media screen and (max-width: 768px) {
     .footer-list p{
@@ -548,28 +566,75 @@ span {
     #forma .check .labela span{
         display:block;
     }
-    #centar{
-        width:400px;
-        line-height: 1;
+    .footer .footer-list span{
+        display: inline-block;
     }
-    .labela p{
-        width: 200px;
+    .footer{
+        bottom:auto;
     }
-    #labela1p{
-        width:210px;
+     
+    .earth {
+        width: 350px;
     }
     .forma {
-        font-size: 19px;
+        width:290px;
     }
-    .forma img {
-        margin:  0 7px 5px 18px;
+    #centar {
+        width:330px;
     }
+    .labela p {
+        width: 60%
+    }
+    #labela1p {
+        width: 60%;
+    }
+    #labela1 .tooltip1 {
+        top: -50px;
+    }
+    #labela2 .tooltip1 {
+        top:-20px;
+    }
+    #doo2 {
+        margin-top: 6px;
+    }
+    #doo1 {
+        margin-top: 48px;
+    }
+    
 }
+
 @media screen and (max-width: 414px) {
-    #centar{
+    
+    .opcija {
         width:350px;
     }
-    .forma img {
-        margin:  0 7px 5px 5px;
+    .earth {
+        width: 350px;
     }
+   
+   .forma {
+        width:290px;
+    }
+    #centar {
+        width:95%;
+    }
+    .labela p {
+        width: 60%
+    }
+    #labela1p {
+        width: 60%;
+    }
+    #labela1 .tooltip1 {
+        top: -50px;
+    }
+    #labela2 .tooltip1 {
+        top:-20px;
+    }
+    #doo2 {
+        margin-top: 6px;
+    }
+    #doo1 {
+        margin-top: 48px;
+    }
+    
 }

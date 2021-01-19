@@ -15,14 +15,14 @@
     <title>S.P/Planirani prihodi</title>
     <link rel="stylesheet" href="css/style-prihodi-doo.css">
     
-     
+    
     </head>
     
    <body> 
    <!-- Navigation testiranje -->
  <nav>
     <div class="logo">
-        <a href="index.html" id="logo1">
+        <a href="index.htm" id="logo1">
             <picture>
                 <source media="(min-width: 1100px)" srcset="img/smartlogo.png">
                 <source srcset="img/smartlogo-mobile.png">
@@ -35,7 +35,7 @@
         <p>Kalkulator troškova poslovanja</p>
     </div>
     <ul class="menu">
-        <li id="slink"><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
+        <li id="slink"><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -56,12 +56,12 @@
         </div>
     
 <div class="opcija">
-<form id="forma" action = "/kalkulator/rezultatSP.htm" method="post">
+<form id="forma" action = "/kalkulator/pregled.htm" method="post">
   
  
     <div class="check">
-  <label for="jeden" class="labela"> Do 50.000 KM
-   <input class="check2" id="jeden" type="radio" name="check" value="radio1" >
+  <label for="jedan" class="labela"> Do 50.000 KM
+      <input class="check2" id="jedan" type="radio" name="check" checked="true" value="do50k" >
    
    <span class="checkmark"></span>
 </label>
@@ -69,7 +69,7 @@
     </br>
 <div class="check">
   <label for="dva" class="labela"> Preko 50.000 KM
-   <input class="check2" id="dva" type="radio" name="check" value="radio1" >
+   <input class="check2" id="dva" type="radio" name="check" value="preko50k" >
    
    <span class="checkmark"></span>
 </label>
@@ -78,9 +78,10 @@
     </br>
  
              <input type="hidden" id="radnoVrijeme" name="radnoVrijeme" value ="${radnoVrijeme}"></input>
-            <input type="hidden" id="plate" name="plate" value="${plate}"></input>  
-            <input type="hidden" id="djelatnost" name="djelatnost" value = "${djelatnost}"></input>
-
+             <input type="hidden" id="plate" name="plate" value="${plate}"></input>  
+             <input type="hidden" id="djelatnost" name="djelatnost" value = "${djelatnost}"></input>
+             <input type="hidden" id="obavljase" name="obavljase" value = "${opcija}"></input>
+             <input type="hidden"  name="oblik" value = "sp"></input>
 
    <input type="submit" id='button-submit' value="Rezultat">
    
@@ -98,13 +99,13 @@
           
         <div class="footer-list">
 
-        <div class="broj">1</div><p>Oblik</p>
+        <div class="broj" id="active">1</div><p>Oblik</p>
             <span></span>
-        <div class="broj" >2</div><p>Djelatnost</p>
+        <div class="broj" id="active" >2</div><p>Djelatnost</p>
             <span></span>
-        <div class="broj">3</div><p>Zaposleni</p>
+        <div class="broj" id="active">3</div><p>Zaposleni</p>
             <span></span>
-        <div class="broj">4</div><p>Prihod</p>
+        <div class="broj" id="active">4</div><p>Prihod</p>
 
         </div> 
 
@@ -112,6 +113,8 @@
   
 
         <script src="js/script.js"></script>
+        
+   
     </body>  
 </html>
       

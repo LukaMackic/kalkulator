@@ -38,7 +38,7 @@ body {
 }
 
 nav {
-    display: flex;
+    display: inline-flex;
     justify-content: space-around;
     align-items: center;
     min-height: 90px;
@@ -61,7 +61,7 @@ nav ul li a {
     color: #aaa;
     font-weight: 600;
     text-transform: uppercase;
-    margin: 0 25px;
+    margin: 0 10px;
     white-space: nowrap;
 
 
@@ -71,7 +71,7 @@ nav ul li a {
 .logo img {
     transform: translateX(-100rem);
     animation: slideIn 1.3s forwards;
-    padding: 8px;
+    padding: 0 25px;
     height: 50px;
     display: flex;
 
@@ -163,25 +163,36 @@ nav ul li a {
     color: #000000;
     opacity: 1;
     text-transform: lowercase !important;
-    width: 200px;
+    width: 220px;
     font-weight: 300;
     border-radius: 29px;
 
 
 }
+#slink {
+    width: 220px;
+    margin-right: 10px;
+}
+#slink a {
+    padding:10px 0px;
+}
+li {
+	list-style: none;
+}
 
 .navbutton:after {
     color: #000;
-    content: url("img/ic_arrow_forward_24px.png");
+    content: url("../img/ic_arrow_forward_24px.png");
     display: inline-block;
     height: 2px;
     line-height: 25px;
-    margin-left: 10px;
     text-align: center;
     width: 25px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
+
+
 }
 
 .navbutton:hover {
@@ -207,24 +218,15 @@ nav ul li a {
     white-space: nowrap;
 }
 
-span {
+nav span {
     display: inline-block;
     width: 0;
     height: 34px;
     border-right: 1px solid #ccc;
 }
 
-.menu :nth-child(4) img {
-    margin-left: 10px;
-}
 
-.menu :nth-child(4) {
-    margin: 0 auto;
-}
 
-.menu :nth-child(4) ::after {
-    display: none;
-}
 
 /* Begin Media Queries */
 @media(max-width: 1024px) {
@@ -235,7 +237,7 @@ span {
     }
 
     .logo img {
-        padding: 10px;
+        padding: 0 10px;
         height: 35px;
     }
 
@@ -250,7 +252,7 @@ span {
 
     .navbutton {
         font-size: 14px !important;
-        width: 170px;
+        
     }
 
     .menu {
@@ -285,7 +287,9 @@ span {
     .nav-active {
         transform: translateX(0%);
     }
-
+    #slink {
+        margin-right: 10px;
+    }
 }
 
 @media(max-width: 900px) {
@@ -328,6 +332,9 @@ span {
         border: 1px solid black;
 
     }
+    nav span {
+        display:none;
+    }
 
 }
 
@@ -363,6 +370,17 @@ span {
 
 }
 /* END OF NAVIGATION */
+
+
+
+
+
+
+
+
+
+
+
 .over {
     background-color: #fff;
     padding:20px 40px;
@@ -440,7 +458,7 @@ tbody {
 }  
 
 .tooltip1 .tooltiptext {
-    visibility: hidden;
+    display:none;
     width: 250px;
     background-color: #000000CC;
     color: #FFF;
@@ -472,7 +490,10 @@ tbody {
     border-color: transparent black transparent transparent;
   }
   .tooltip1:hover .tooltiptext {
-    visibility: visible;
+    display:block;
+  }
+  .tooltip1:active .tooltiptext {
+    display:block;
   }
   .img-option {
       margin-bottom: -5px;
@@ -482,11 +503,11 @@ tbody {
 
 .preuzmi{
     margin: 0 auto;
-    width: 705px;
+    width: 436px;
 }
 
     #button-preuzmi{
-        background: url("img/ic_file_download_24px.svg") 30px center   no-repeat;
+        background: url("../img/ic_file_download_24px.svg") 30px center   no-repeat;
         background-color:  #FFF200;
         color:#000;
         font-size: 20px !important;
@@ -504,7 +525,7 @@ tbody {
         padding-left: 20px;
     }
     #button-posalji{
-        background: url("img/ic_email_24px.svg") 30px center   no-repeat;
+        background: url("../img/ic_email_24px.svg") 30px center   no-repeat;
         background-color:  #FFF200;
         color:#000;
         font-size: 20px !important;
@@ -522,7 +543,7 @@ tbody {
         padding-left: 25px;
     }
     #button-stampanje{
-        background: url("img/ic_local_printshop_24px.svg") 30px center   no-repeat;
+        background: url("../img/ic_local_printshop_24px.svg") 30px center   no-repeat;
         background-color:  #FFF200;
         color:#000;
         font-size: 20px !important;
@@ -539,7 +560,15 @@ tbody {
         margin-bottom: 5rem;
         padding-left: 20px;
     }
-
+    button:focus {
+        outline: none;
+      }
+    input:focus {
+        outline:none;
+    }
+    select:focus {
+        outline:none;
+    }
 
 
   @media screen and (max-width: 1024px) {
@@ -584,7 +613,11 @@ tbody {
         display: table;
     }
     tr {margin-top: 10px;}
-    
+    .tooltip1 .tooltiptext {
+        top: 34px;
+        left: -35px;
+        width: 120px;
+    }
   }
 
 
@@ -612,7 +645,7 @@ tbody {
 
 .article {
     text-align: center;
-    width: 90vw;
+    width: 100%;
     margin: 0 auto;
     padding: 30px 0;
     margin-bottom: 10px;

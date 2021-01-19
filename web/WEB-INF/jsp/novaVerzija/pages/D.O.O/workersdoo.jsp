@@ -32,12 +32,25 @@ for (var brojac=1;brojac<=br;brojac++) {
    var pay=document.getElementById('pay'+brojac).value;
     plate+=pay+'#';
     radnoVrijeme+=hour+'#';
-   if (hour==4 && pay<260){ document.getElementById('alert'+brojac).innerHTML='*Iznos najniže plate u Republici Srpskoj za pola radnog vremena je 260,00 KM.'; 
+    
+
+   if ((hour==4 && hour==8) && pay<0 ){ 
+                            document.getElementById('alert'+brojac).innerHTML='*Iznos najniže plate u Republici Srpskoj za pola radnog vremena je 260,00 KM.'; 
+                            document.getElementById('pay'+brojac).style.border = 'solid 1px red';
+
+
+                            ok=false;}
+   if (hour==4 && pay<260){ 
+                            document.getElementById('alert'+brojac).innerHTML='*Iznos najniže plate u Republici Srpskoj za pola radnog vremena je 260,00 KM.'; 
                             document.getElementById('pay'+brojac).style.border = 'solid 1px red';
                             ok=false;}
+                        
    if (hour==8 && pay<520){ document.getElementById('alert'+brojac).innerHTML='*Iznos najniže plate u Republici Srpskoj za puno radno vrijeme  je 520,00 KM.';
                             document.getElementById('pay'+brojac).style.border = 'solid 1px red';
                             ok=false;}
+             
+                        
+  
 }
 if(!ok) return false;
 if (ok){
@@ -48,25 +61,26 @@ return true;
 }}
 
 function dodaj(){
-    br++;    
+    br++; 
+    if(br<50){
     var list =document.getElementById("insert");
     var entry = document.createElement('li');
-    entry.innerHTML="<label for='hours"+br+"'>Radnik "+br+"</label><select class='hours' id='hours"+br+"'><option value='4'>Radno vrijeme (4h)</option><option value='8' >Radno vrijeme (8h)</option> </select><label for='pay"+br+"' class='label-pay'>Neto plata:</label><input type='number' class='pay' id='pay"+br+"' required='required'><label for='pay' class='km-pay' id='km-pay"+br+"'>KM  <img  onmouseenter='hover("+br+")' onmouseout='ukini("+br+")' onmouseuot='hoverOut("+br+")' src='img/Path 469.svg' alt='info1' id='img-option' class='img-option'> </label><label class='alert' id='alert"+br+"'></label>";
-    list.appendChild(entry);        
+    entry.innerHTML="<label for='hours"+br+"'>Radnik "+br+"</label><select class='hours' id='hours"+br+"'><option value='4'>Radno vrijeme (4h)</option><option value='8' >Radno vrijeme (8h)</option> </select><label for='pay"+br+"' class='label-pay'>Neto plata:</label><input type='number' onKeyPress='if(this.value.length==7) return false;' onkeydown='javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))' class='pay' id='pay"+br+"' required='required'><label for='pay' class='km-pay' id='km-pay"+br+"'>KM  <img  onmouseenter='hover("+br+")' onmouseout='ukini("+br+")' onmouseuot='hoverOut("+br+")' src='img/Path 469.svg' alt='info1' id='img-option' class='img-option'> </label><label class='alert' id='alert"+br+"'></label>";
+    list.appendChild(entry);}        
 }
 
 function hover(x) {
     var sati = document.getElementById('hours'+x).value;
     if (sati==4) {document.getElementById('tooltip').innerText='Iznos najniže plate u Republici Srpskoj za pola radnog vremena je 260,00 KM.';
-                    document.getElementById("tooltip").style.visibility='visible';
+                    document.getElementById("tooltip").style.display='block';
                   } 
     else
     {document.getElementById('tooltip').innerText='Iznos najniže plate u Republici Srpskoj za puno radno vrijeme  je 520,00 KM.';
-    document.getElementById("tooltip").style.visibility='visible';
+    document.getElementById("tooltip").style.display='block';
                     }
 }
 function ukini() {
-    document.getElementById("tooltip").style.visibility='hidden';
+    document.getElementById("tooltip").style.display='none';
 }
 
 
@@ -83,7 +97,7 @@ function ukini() {
 
 
 <body onLoad="dodaj()" >
-    <h1>${djelatnost}</h1>
+    <h1 hidden>${djelatnost}</h1>
     
  <!-- Navigation testiranje -->
  <nav>
@@ -98,12 +112,12 @@ function ukini() {
     </div>
     <span class="divider"></span>
     <div class="afterlogo">
-        <p>Kalkulator Troškova Poslovanja</p>
+        <p>Kalkulator troškova poslovanja</p>
     </div>
     <ul class="menu">
         <li><a href="#" class="afterlogo"></a></li>
         
-        <li><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
+        <li id="slink"><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -141,24 +155,25 @@ function ukini() {
         </form >
     </div>
     <span class='tooltip' id='tooltip'></span>
+    
+    <br>
 
-      <!---footer-->
+     <!---footer-->
        <div class="footer">
           
         <div class="footer-list">
 
-        <div class="broj" >1</div><p>Oblik</p>
+        <div class="broj" id="active">1</div><p>Oblik</p>
             <span></span>
-        <div class="broj" >2</div><p>Djelatnost</p>
+        <div class="broj" id="active" >2</div><p>Djelatnost</p>
             <span></span>
-        <div class="broj">3</div><p>Zaposleni</p>
+        <div class="broj" id="active">3</div><p>Zaposleni</p>
             <span></span>
-        <div class="broj" id="notactive">4</div><p class="notactive">Prihod</p>
+        <div class="broj">4</div><p>Prihod</p>
 
         </div> 
 
     </div>
-
 
 
   <script>
@@ -177,7 +192,8 @@ function fn(e) {
 
 </script>
       
-    
+     
+
   
   
 

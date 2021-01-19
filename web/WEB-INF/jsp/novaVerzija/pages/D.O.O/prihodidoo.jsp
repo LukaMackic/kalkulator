@@ -14,26 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D.O.O/Planirani prihodi</title>
     <link rel="stylesheet" href="css/style-prihodi-doo.css">
-    <style>
-        #button-submit {
-    background: url("img/ic_arrow_forward_24px\ \(1\).svg") 175px center   no-repeat;
-    background-color:  #3EC300;
-    box-shadow: 0px 10px 20px #3EC30080;
-    color:#FFF;
-    font-size: 20px !important;
-    text-align: center;
-    border-radius: 33px;
-    width:280px;
-    height: 61px;
-    margin: 45px auto;
-    font-size: 16px;
-    font-weight: 600;
-    border:none;
-    cursor: pointer;
-    display:block;
-    padding-right: 25px;
-}
-    </style>
+   <script>
+
+        function setValue() {
+           document.getElementById("jedan").checked=true;
+        }
+        </script>
+  
     </head>
     
    <body> 
@@ -56,7 +43,7 @@
     <ul class="menu">
         <li><a href="#" class="afterlogo"></a></li>
         
-        <li><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
+        <li id="slink"><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -124,6 +111,7 @@
             <input type="hidden" id="plate" name="plate" value="${plate}"></input>  
             <input type="hidden" id="djelatnost" name="djelatnost" value = "${djelatnost}"></input>
             <input type="hidden"  name="oblik" value = "doo"></input>
+               <input type="hidden" id="obavljase" name="obavljase" value = ""></input>
         
    <input type="submit" id='button-submit' value="Rezultat">
    
@@ -142,13 +130,13 @@
           
         <div class="footer-list">
 
-        <div class="broj">1</div><p>Oblik</p>
+            <div class="broj" id="active">1</div><p>Oblik</p>
             <span></span>
-        <div class="broj" >2</div><p>Djelatnost</p>
+        <div class="broj" id="active">2</div><p>Djelatnost</p>
             <span></span>
-        <div class="broj">3</div><p>Zaposleni</p>
+        <div class="broj" id="active">3</div><p>Zaposleni</p>
             <span></span>
-        <div class="broj">4</div><p>Prihod</p>
+        <div class="broj" id="active">4</div><p>Prihod</p>
 
         </div> 
 

@@ -14,7 +14,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rezultati</title>
   <link rel="stylesheet" href="css/style-rezultati.css">
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  
+<style>
+  @media print {
 
+
+     nav, footer, .preuzmi, #noprint1, #noprint2, #article2{
+        display: none;
+     }
+
+     .printM {
+       margin-top: 12rem;
+     }
+     .rezultati{
+       margin-top: 1rem;
+     }
+
+  }
+  </style>
+  <script>
+       function pdf() {
+          
+           var element = document.getElementById('hello');
+            var opt = {
+            
+              filename:     'Rezultat.pdf',
+              image:        { type: 'jpeg', quality: 1 },
+              html2canvas: {scale: 2},
+              jsPDF:        { unit: 'mm', format: 'letter', orientation: 'p' }
+            };
+
+html2pdf().set(opt).from(element).save();
+
+}
+ </script>
+  
 
 
   <script>
@@ -52,16 +88,19 @@
     }
     
                       }
-    function hover2() {
+   
+        function hover2() {
         var prihod = document.getElementById('godisnji_prihod');
-        if (prihod.innerHTML==="Do 50.000 KM") 
-          {document.getElementById('tooltip-porez-na-dohodak').innerText='Godišnji porez malog preduzetnika obračunava se po stopi od 2% na ukupno ostvareni prihod malog preduzetnika. Mali preduzetnik jeste fizičko lice koje obavlja samostalnu djelatnost, ne zapošljava više od tri radnika i ukupan godišnji prihod po osnovu obavljanja djelatnosti ne prelazi iznos od 50.000 KM.';  
-              }
-        if (prihod.innerHTML==="Preko 50.000 KM")
+        if (prihod.innerHTML==="do 50.000 KM") 
+          {document.getElementById('tooltip-porez-na-dohodak').innerText='Godišnji porez malog preduzetnika obračunava se po stopi od 2% na ukupno ostvareni prihod malog preduzetnika. Mali preduzetnik jeste fizičko lice koje obavlja samostalnu djelatnost, ne zapošljava više od tri radnika i ukupan godišnji prihod po osnovu obavljanja djelatnosti ne prelazi iznos od 50.000 KM.';
+            document.getElementById('porez-dohodak').innerText='2% od ukupne dobiti'  }
+        if (prihod.innerHTML==="preko 50.000 KM")
           {document.getElementById('tooltip-porez-na-dohodak').innerText='Poreska osnovica za obračun poreza na dohodak od samostalne djelatnosti predstavlja razliku između prihoda i rashoda nastalih obavljanjem samostalne djelatnosti u poreskom periodu. Stopa poreza na dohodak iznosi 10%.';
-              }
+          document.getElementById('porez-dohodak').innerText='10% od ukupne dobiti'  }
 
                   }
+
+                  
 
 
     </script>
@@ -73,7 +112,7 @@
   <nav>
     <nav>
       <div class="logo">
-        <a href="index.html" id="logo1">
+        <a href="index.htm" id="logo1">
           <picture>
             <source media="(min-width: 1100px)" srcset="img/smartlogo.png">
             <source srcset="img/smartlogo-mobile.png">
@@ -89,8 +128,7 @@
         <li><a href="#" class="afterlogo"></a></li>
         <li><a href="o-nama.html">O nama</a></li>
         <li><a href="https://www.smartoffice.ba/kontakt">Kontakt</a></li>
-        <li><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba <img
-              src="img/ic_arrow_forward_24px.svg" alt="arrow24"></a></li>
+        <li><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba</a></li>
       </ul>
       <div class="burger">
         <div class="line1"></div>
@@ -103,15 +141,17 @@
   <!-- End of navigation -->
 
 
-    <div class="article">
+     <div id="hello">
+         <div class="article">
 
-      <h1>Pregled</h1>
+      <h1 >Pregled</h1>
 
     </div>
+ 
 
   <div class="over">
     <table class="rezultati">
-      <tr >
+      <tr>
         <td class="red-prvi">Oblik registracije</td>
         <td class="red-drugi" id="oblik_registracije" value="">${oblik}</td>
       </tr>
@@ -122,11 +162,11 @@
       </tr>
       <tr id="obavlja-se-kao">
         <td class="red-prvi">Preduzetnička djelatnost se obavlja kao</td>
-        <td class="red-drugi" id="preduzetnicka_djelatnost"></td>
+        <td class="red-drugi" id="preduzetnicka_djelatnost">${obavljase}</td>
       </tr>
       <tr id="godisnji-prihod">
         <td class="red-prvi">Planirani godišnji prihod</td>
-        <td class="red-drugi" id="godisnji_prihod">Do 50.000 KM</td>
+        <td class="red-drugi" id="godisnji_prihod">${prihodi}</td>
       </tr>
       <tr id="status-preduzetnika">
         <td class="red-prvi">Status preduzetnika</td>
@@ -148,7 +188,7 @@
 
     <div class="article">
 
-      <h1>Mjesečni troškovi za zaposlene</h1>
+        <h1 class="printM">Mjesečni troškovi za zaposlene</h1>
 
     </div>
 
@@ -161,9 +201,9 @@
     
 
 
-    <div class="article">
+    <div class="article" >
 
-      <h1>Godišnji troškovi i obaveze</h1>
+        <h1 class="printM">Godišnji troškovi i obaveze</h1>
 
     </div>
 
@@ -193,7 +233,7 @@
             <div class="tooltip1"><img src="img/Path 469.svg" alt="info1" class="img-option" id="img-zanatska">
               <span class="tooltiptext" id="tooltip-zanatska"></span></div>
           </td>
-          <td class="red-drugi" id="clanarina_zanatsko_preduzetnicke_komore"></td>
+          <td class="red-drugi" id="clanarina_zanatsko_preduzetnicke_komore">24.00 KM</td>
         </tr>
        
         <tr id="porez-dobit">
@@ -208,7 +248,7 @@
             <div class="tooltip1"><img src="img/Path 469.svg" alt="info1" class="img-option">
               <span class="tooltiptext" id="tooltip-porez-na-dohodak"></span></div>
           </td>
-          <td class="red-drugi"></td>
+          <td class="red-drugi" id="porez-dohodak"></td>
         </tr>
         <tr id="porez-sume">
           <td class="red-prvi">Naknade za šume 
@@ -243,7 +283,7 @@
         <tr id="privredna-komora">
           <td class="red-prvi">Članarina Privredne komore RS
             <div class="tooltip1"><img src="img/Path 469.svg" alt="info1" class="img-option">
-              <span class="tooltiptext" id="tooltip-privredna-komora"></span></div>
+              <span class="tooltiptext" id="tooltip-privredna-komora">24,00 KM</span></div>
           </td>
           <td class="red-drugi"id="clanarina_privredne_komore">0,02% do 0,05% od ukupnog prihoda</td>
         </tr>
@@ -263,7 +303,7 @@
 
     <div class="article">
 
-      <h1>Ostali troškovi</h1>
+      <h1 class="printM">Ostali troškovi</h1>
 
     </div>
 
@@ -314,7 +354,7 @@
         </tr>
       </table>
   </div>
-
+  </div>
   <div id="napomena">
     NAPOMENA: Kalkulator je informativnog karaktera, te su svi podaci podložni promjenama u 
     zavisnosti od odabira osnovne djelatnosti, prijavljenih radnika, te ostalih faktora koji 
@@ -324,9 +364,9 @@
 
   <div class="preuzmi">
 
-    <input type="submit" class="yellow" id="button-preuzmi" value="Preuzmi (.pdf)">
-    <input type="submit" class="yellow" id='button-posalji' value="Pošalji na email">
-    <input type="submit" class="yellow" id='button-stampanje' value="Štampanje">
+      <input type="submit" class="yellow" id="button-preuzmi" onclick="pdf();" value="Preuzmi (.pdf)">
+    
+    <input type="submit" class="yellow" id='button-stampanje' onclick="window.print()" value="Štampanje">
 
 
   </div>
@@ -338,12 +378,12 @@
 
 
 
-  <div class="article">
+  <div class="article" id="noprint1">
     <h1 class="h-margin">Korisne informacije</h1>
     <h3 > Pogledajte korisne članke sa našeg bloga</h3>
   </div>
 
-  <div class="grid-container-blog">
+  <div class="grid-container-blog" id="noprint2">
     <div class="grid-item-blog"  onclick="window.open('https://www.smartoffice.ba/blog/46-registracija-firme-vodic-za-nove-preduzetnike')" style="cursor: pointer;">
         <img src="img/Vodi-za-preduzetnike.jpg" alt="blog1" width="100vw">
         <h2>Vodič za nove preduzetnike</h2>
@@ -412,6 +452,7 @@
   </footer>
 
         <script src="js/script.js"></script>
+        <script src="js/html2pdf.bundle.min.js"></script>
 
 
 

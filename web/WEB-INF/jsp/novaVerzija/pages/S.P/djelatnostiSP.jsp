@@ -22,79 +22,42 @@
 <script>
 
 function myFunction() {
-        document.getElementById('filter').innerHTML="";
-        var match = document.getElementById('myInput').value;
-        var djelatnosti =document.getElementById("djelatnost");
-        var listItem = djelatnosti.getElementsByTagName("li");
-        var list = document.createElement('div');
-        for (var i=0; i < listItem.length; i++) {
-                if(listItem[i].innerHTML.toLowerCase().startsWith(match.toLowerCase())){
-                var entry = document.createElement('label');
-               
-                entry.className += 'container-radio';
-                entry.innerHTML=listItem[i].innerHTML + "<input type='radio' value='"+listItem[i].innerHTML+"' id='"+listItem[i].innerHTML+"' name='djelatnost'><span class='checkmark'></span>";
-                list.appendChild(entry); 
-                }
-                if(match==""){
-                document.getElementById('filter').style.display='none';
-                document.getElementById('dropcon2').style.display='block'; }
-                else {document.getElementById('dropcon2').style.display='none';
-        document.getElementById('filter').style.display='block';}
-        }
-        document.getElementById('filter').appendChild(list);
-        
- }  
+                document.getElementById('filter').innerHTML="<div id='rezultati'>Rezultati:</div>";
+                var match = document.getElementById('myInput').value;
+                var djelatnosti =document.getElementById("djelatnost");
+                var listItem = djelatnosti.getElementsByTagName("li");
+                var list = document.createElement('div');
+            for (var i=0; i < listItem.length; i++) {
+                txtValue = listItem[i].textContent || listItem[i].innerText;
+                         if(txtValue.toLowerCase().includes(match.toLowerCase())){
+                      var entry = document.createElement('label');
+                      entry.className += 'container-radio';
+                    entry.innerHTML="<input type='radio' value='"+listItem[i].innerHTML+"' id='"+listItem[i].innerHTML+" autocomplete='off' name='djelatnost'><span class='checkmark'></span><span>"+listItem[i].innerHTML+"</span>"; 
+                     list.appendChild(entry); 
+                     document.getElementById('filter').style.display="block";
+                     document.getElementById('dropcon2').style.display='none';
+                 }
+                 if (match==""){
+                    document.getElementById('filter').style.display='none';
+                    document.getElementById('dropcon2').style.display='block';
+                     if (document.getElementById("button-submit").disabled == false){
+                            document.getElementById("button-submit").disabled = true;
+                            document.getElementById('button-submit').style.backgroundColor="#D1D1D1";
+                            document.getElementById('button-submit').style.boxShadow="none";
+                        }
+                 }
+
+
+            }
+            document.getElementById('filter').appendChild(list);
+
+            }
+ 
             
         
+        
         </script>
-<style>
-    
-    #filter label {
-    display: block;
-}
- .container-radio{    margin: 0;  }
- #filter::-webkit-scrollbar {
-    width: 7px;
 
-  }
-#filter::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #FFF; 
-    border-radius: 20px;
-
-  }
-   
-
-  #filter::-webkit-scrollbar-thumb {
-    background: #999999; 
-    border-radius: 20px;
-  }
-  
-  #filter::-webkit-scrollbar-thumb:hover {
-    background: #999999; 
-  }
-   #button-submit {
-    background: url("img/ic_arrow_forward_24px\ \(1\).svg") 160px center   no-repeat;
-    background-color:  #3EC300;
-    box-shadow: 0px 10px 20px #3EC30080;
-    color:#FFF;
-    font-size: 20px !important;
-    text-align: center;
-    border-radius: 33px;
-    width:280px;
-    height: 61px;
-    margin: 20px auto;
-    font-size: 16px;
-    font-weight: 600;
-    border:none;
-    cursor: pointer;
-    display:block;
-    margin-bottom: 5rem;
-    padding-right: 22px;
-}
-.select:checked {
-    font-weight: 700;
-}
-</style>
 
 
 </head>
@@ -119,7 +82,7 @@ function myFunction() {
         <ul class="menu">
             <li><a href="#" class="afterlogo"></a></li>
 
-            <li><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba</a></li>
+            <li id="slink"><a href="https://www.smartoffice.ba/" class="navbutton">www.smartoffice.ba</a></li>
         </ul>
         <div class="burger">
             <div class="line1"></div>
@@ -150,18 +113,7 @@ function myFunction() {
             <img src="img/search-black-18dp.svg" id="searchimg" alt="slika-search">
         </div>
         
-        <ul id="filter" style = "   margin:0 auto;
-    background: #FFFFFF;
-    padding: 20px 20px;
-    width:700px;
-    font-size: 19px;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    height:300px;
-    overflow-y: scroll;
-    border-radius: 6px;
-    box-shadow: 0px 5px 15px #0000000D;
-    display:none;">
+        <ul id="filter" onclick="validate2();" >
 
         </ul>
         
@@ -175,7 +127,8 @@ function myFunction() {
         
             
             <div id="selected1" class="selected" onclick="show1()">
-                   Poljoprivreda, šumarstvo i ribolov 
+                <p>Poljoprivreda, šumarstvo i ribolov</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img1" class="img-arrow" >
+                      
             </div>
 
             <div id="select-box1" class="select-box">
@@ -184,7 +137,7 @@ function myFunction() {
                 
                 
             <div id="selected3" class="selected" onclick="show3()">
-                    Prerađivačka industrija
+                   <p> Prerađivačka industrija</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img2" class="img-arrow" >
             </div>
 
             <div id="select-box3" class="select-box">
@@ -193,7 +146,7 @@ function myFunction() {
 
             
             <div id="selected4" class="selected" onclick="show4()">
-                    Proizvodnja i snabdijevanje električnom energijom, plinom, parom i klimatizacijom
+                  <p>  Proizvodnja i snabdijevanje električnom energijom, plinom, parom i klimatizacijom</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img3" class="img-arrow" >
             </div>
 
             <div id="select-box4" class="select-box">
@@ -203,8 +156,8 @@ function myFunction() {
 
 
             <div id="selected5" class="selected" onclick="show5()">
-                    Snabdijevanje vodom; kanalizacija, upravljanje otpadom  i djelatnosti sanacije 
-                    (remedijacije) životne sredine
+                   <p> Snabdijevanje vodom; kanalizacija, upravljanje otpadom  i djelatnosti sanacije 
+                    (remedijacije) životne sredine</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img4" class="img-arrow" >
             </div>
 
             <div id="select-box5" class="select-box">
@@ -213,7 +166,7 @@ function myFunction() {
 
             
             <div id="selected6" class="selected" onclick="show6()">
-                    Građevinarstvo
+                   <p> Građevinarstvo</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img5" class="img-arrow" >
             </div>
 
             <div id="select-box6" class="select-box">
@@ -222,7 +175,7 @@ function myFunction() {
             
             
             <div id="selected7" class="selected" onclick="show7()">
-                    Trgovina na veliko i na malo; popravka motornih vozila i motocikala
+                   <p> Trgovina na veliko i na malo; popravka motornih vozila i motocikala</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img6" class="img-arrow" >
             </div>
 
             <div id="select-box7" class="select-box">
@@ -231,7 +184,7 @@ function myFunction() {
 
             
             <div id="selected8" class="selected" onclick="show8()">
-                    Saobraćaj i skladištenje
+                   <p> Saobraćaj i skladištenje</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img7" class="img-arrow" >
             </div>
 
             <div id="select-box8" class="select-box">
@@ -240,7 +193,7 @@ function myFunction() {
             
             
             <div id="selected9" class="selected" onclick="show9()">
-                    Djelatnosti pružanja smještaja, pripreme i posluživanja hrane;<br> hotelijerstvo i ugostiteljstvo
+                   <p> Djelatnosti pružanja smještaja, pripreme i posluživanja hrane;<br> hotelijerstvo i ugostiteljstvo</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img8" class="img-arrow" >
             </div>
             <div id="select-box9" class="select-box">
                 
@@ -248,7 +201,7 @@ function myFunction() {
             
             
             <div id="selected10" class="selected" onclick="show10()">
-                    Informacije i komunikacije
+                  <p>  Informacije i komunikacije</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img9" class="img-arrow" >
             </div>
 
             <div id="select-box10" class="select-box">
@@ -257,7 +210,7 @@ function myFunction() {
             
             
             <div id="selected11" class="selected" onclick="show11()">
-                    Finansijske djelatnosti i djelatnosti osiguranja
+                    <p>Finansijske djelatnosti i djelatnosti osiguranja</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img10" class="img-arrow" >
             </div>
 
             <div id="select-box11" class="select-box">
@@ -265,7 +218,7 @@ function myFunction() {
             </div>
             
             <div id="selected12" class="selected" onclick="show12()">
-                    Poslovanje nekretninama
+                  <p>  Poslovanje nekretninama</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img11" class="img-arrow" >
             </div>
 
             <div id="select-box12" class="select-box">
@@ -274,7 +227,7 @@ function myFunction() {
             
             
             <div id="selected13" class="selected" onclick="show13()">
-                    Stručne, naučne i tehničke djelatnosti
+                    <p>Stručne, naučne i tehničke djelatnosti</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img12" class="img-arrow" >
             </div>
 
             <div id="select-box13" class="select-box">
@@ -283,7 +236,7 @@ function myFunction() {
             
 
             <div id="selected14" class="selected" onclick="show14()">
-                    Administrativne i pomoćne uslužne djelatnosti
+                   <p> Administrativne i pomoćne uslužne djelatnosti</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img13" class="img-arrow" >
             </div>
 
             <div id="select-box14" class="select-box">
@@ -292,7 +245,7 @@ function myFunction() {
 
 
             <div id="selected16" class="selected" onclick="show16()">
-                    Obrazovanje
+                   <p> Obrazovanje</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img14" class="img-arrow" >
                 </div>
             <div id="select-box16" class="select-box">
                 
@@ -300,14 +253,14 @@ function myFunction() {
            
 
            <div id="selected17" class="selected" onclick="show17()">
-                    Djelatnosti zdravstvene zaštite i socijalnog rada
+                   <p> Djelatnosti zdravstvene zaštite i socijalnog rada</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img15" class="img-arrow" >
                 </div>
             <div id="select-box17" class="select-box">
                 
             </div>
             
             <div id="selected18" class="selected" onclick="show18()">
-                    Umjetnost, zabava i rekreacija
+                   <p> Umjetnost, zabava i rekreacija</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img16" class="img-arrow" >
             </div>
             <div id="select-box18" class="select-box">
                 
@@ -315,7 +268,7 @@ function myFunction() {
             
 
             <div id="selected19" class="selected" onclick="show19()">
-                   Ostale uslužne djelatnosti
+                   <p>Ostale uslužne djelatnosti</p> <img src="img/keyboard_arrow_down-black-18dp.svg" id="img17" class="img-arrow" >
             </div>
             <div id="select-box19" class="select-box">
                
@@ -325,21 +278,7 @@ function myFunction() {
         </div>
         
    </div> 
-    <input style = 'background: url("img/ic_arrow_forward_24px\ \(1\).svg") 170px center   no-repeat;
-    background-color:  #3EC300;
-    box-shadow: 0px 10px 20px #3EC30080;
-    color:#FFF;
-    font-size: 20px !important;
-    text-align: center;
-    border-radius: 33px;
-    width:280px;
-    height: 61px;
-    margin: 45px auto;
-    font-size: 16px;
-    font-weight: 600;
-    border:none;
-    cursor: pointer;
-    display:block;'  type="submit" id="button-submit" value="Dalje">
+        <input type="submit" id="button-submit" value="Dalje" disabled>
            </form>
     <script>           
          const listaA = "${podrucjeA}".replace("[", "").replace("]", "").split(";, ");
@@ -350,23 +289,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
-        radioButton.setAttribute('class',"select");
-      
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerA.appendChild(childDiv);
+        languageContainerA.appendChild(childDiv);
  });
 
    </script>
@@ -376,25 +315,27 @@ function myFunction() {
          const languageContainerC = document.getElementById("select-box3");
 
         listaC.forEach( element => {
-        const childDiv = document.createElement('div');
+       const childDiv = document.createElement('div');
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerC.appendChild(childDiv);
+            languageContainerC.appendChild(childDiv);
  });
 
    </script>
@@ -407,23 +348,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
-        radioButton.setAttribute('class',"select");
-      
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerD.appendChild(childDiv);
+        languageContainerD.appendChild(childDiv);
  });
 
    </script>
@@ -437,21 +378,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerE.appendChild(childDiv);
+        languageContainerE.appendChild(childDiv);
  });
 
    </script>
@@ -464,21 +407,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerF.appendChild(childDiv);
+        languageContainerF.appendChild(childDiv);
  });
 
    </script>
@@ -491,21 +436,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerG.appendChild(childDiv);
+        languageContainerG.appendChild(childDiv);
  });
 
    </script>
@@ -518,21 +465,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerH.appendChild(childDiv);
+        languageContainerH.appendChild(childDiv);
  });
 
    </script>
@@ -545,21 +494,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerI.appendChild(childDiv);
+        languageContainerI.appendChild(childDiv);
  });
 
    </script>
@@ -572,21 +523,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerJ.appendChild(childDiv);
+        languageContainerJ.appendChild(childDiv);
  });
 
    </script>
@@ -599,21 +552,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerK.appendChild(childDiv);
+        languageContainerK.appendChild(childDiv);
  });
 
    </script>
@@ -626,21 +581,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerL.appendChild(childDiv);
+        languageContainerL.appendChild(childDiv);
  });
 
    </script>
@@ -653,21 +610,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerM.appendChild(childDiv);
+        languageContainerM.appendChild(childDiv);
  });
 
    </script>
@@ -680,21 +639,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerN.appendChild(childDiv);
+        languageContainerN.appendChild(childDiv);
  });
 
    </script>
@@ -708,21 +669,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerP.appendChild(childDiv);
+        languageContainerP.appendChild(childDiv);
  });
 
    </script>
@@ -735,21 +698,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerQ.appendChild(childDiv);
+        languageContainerQ.appendChild(childDiv);
  });
 
    </script>
@@ -762,21 +727,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerR.appendChild(childDiv);
+        languageContainerR.appendChild(childDiv);
  });
 
    </script>
@@ -789,21 +756,23 @@ function myFunction() {
         const radioButton = document.createElement('input');
         const radioLabel = document.createElement("label");
         const radioSpan = document.createElement("span");
-    
+        const radioOne = document.createElement("span");
+
         radioLabel.setAttribute('class', "container-radio");
         radioSpan.setAttribute('class', "checkmark");
         radioButton.setAttribute('type', "radio");
         radioButton.setAttribute('id', element);
-                       
+
         radioButton.setAttribute('name', "djelatnost");
         radioButton.setAttribute('value', element);
-    
+
         radioLabel.appendChild(radioButton);
-        radioLabel.appendChild(document.createTextNode(element));
+        radioLabel.appendChild(radioOne);
+        radioOne.appendChild(document.createTextNode(element));
         childDiv.appendChild(radioLabel);
         radioLabel.appendChild(radioSpan);
 
-    languageContainerS.appendChild(childDiv);
+        languageContainerS.appendChild(childDiv);
  });
 
    </script>
@@ -831,9 +800,9 @@ function myFunction() {
           
         <div class="footer-list">
 
-        <div class="broj" >1</div><p>Oblik</p>
+        <div class="broj" id="active">1</div><p>Oblik</p>
             <span></span>
-        <div class="broj" >2</div><p>Djelatnost</p>
+        <div class="broj" id="active" >2</div><p>Djelatnost</p>
             <span></span>
         <div class="broj">3</div><p>Zaposleni</p>
             <span></span>
@@ -843,7 +812,42 @@ function myFunction() {
 
     </div>
          <!---footer-->
+          <script src="js/script.js"></script>
+ <script>
 
+    var inputs=document.querySelectorAll("input[type=radio]"),
+        x=inputs.length;
+    while(x--)
+        inputs[x].addEventListener("change",function validate(){
+      var check = document.forms[0];
+      var a;
+      for (a = 0; a<check.length; a++) {
+        if (check[a].checked==true) {
+          document.getElementById('button-submit').style.backgroundColor="#3EC300";
+          document.getElementById('button-submit').style.boxShadow="0px 10px 20px #3EC30080";
+          document.getElementById("button-submit").disabled = false;
+        }
+
+      }
+    }
+
+    ,0);
+
+    function validate2(){
+      var check2 = document.forms[0];
+      var a2;
+      for (a2 = 0; a2<check2.length; a2++) {
+        if (check2[a2].checked==true) {
+          document.getElementById('button-submit').style.backgroundColor="#3EC300";
+          document.getElementById('button-submit').style.boxShadow="0px 10px 20px #3EC30080";
+          document.getElementById("button-submit").disabled = false;
+        }
+
+      }
+    }
+
+  
+    </script>
 
         <script src="js/script.js"></script>
 

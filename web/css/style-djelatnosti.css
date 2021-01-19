@@ -76,7 +76,6 @@ nav ul li a {
 
 
 
-
 @keyframes slideIn {
     from {}
 
@@ -206,7 +205,7 @@ li {
     white-space: nowrap;
 }
 
-span {
+ nav span {
     display: inline-block;
     width: 0;
     height: 34px;
@@ -224,7 +223,10 @@ span {
 .menu :nth-child(4) ::after {
     display: none;
 }
-
+#slink {
+    width:220px;
+    margin-right: 10px;
+}
 /* Begin Media Queries */
 @media(max-width: 1024px) {
 
@@ -255,8 +257,8 @@ span {
     .menu {
         position: fixed;
         right: 0;
-        height: 80vh;
-        top: 11.9vh;
+        height: 40vh;
+        top: 9.9vh;
         background-color: #FFF200;
         display: flex;
         flex-direction: column;
@@ -265,6 +267,9 @@ span {
         transform: translateX(100%);
         transition: transform .5s slide-in;
         font-size: 14px;
+    }
+    #slink {
+        margin-right: -50px!important;
     }
 
     .menu li {
@@ -299,8 +304,8 @@ span {
     .menu {
         position: fixed;
         right: 0;
-        height: 80vh;
-        top: 11.9vh;
+        height: 40vh;
+        top: 10.9vh;
         background-color: #FFF200;
         display: flex;
         flex-direction: column;
@@ -310,7 +315,9 @@ span {
         transition: transform .5s slide-in;
         font-size: 14px;
     }
-
+     #slink {
+        margin-right: -50px !important;
+    }
     .menu li {
         opacity: 0;
     }
@@ -331,7 +338,7 @@ span {
 }
 
 @media(max-width: 768px) {
-    span {
+    nav span {
         display: none;
     }
 
@@ -399,8 +406,8 @@ span {
 #dropcon2 {
     margin:0 auto;
     background: #FFFFFF;
-    padding: 20px 20px;
-    width:700px;
+    
+    width:740px;
     font-size: 19px;
     font-weight: 300;
     margin-bottom: 3rem;
@@ -409,6 +416,9 @@ span {
     border-radius: 6px;
     box-shadow: 0px 5px 15px #0000000D;
     
+}
+#djelatnost {
+    display:none;
 }
 #filter {
     margin:0 auto;
@@ -422,12 +432,12 @@ span {
     overflow-y: scroll;
     border-radius: 6px;
     box-shadow: 0px 5px 15px #0000000D;
-}
-#filter {
     display: none;
 }
+
 #filter label {
     display: block;
+    color: #707070;
 }
 
 #dropcon2::-webkit-scrollbar {
@@ -450,7 +460,25 @@ span {
     background: #999999; 
   }
 
+  #filter::-webkit-scrollbar {
+    width: 7px;
 
+  }
+#filter::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #FFF; 
+    border-radius: 20px;
+
+  }
+   
+
+  #filter::-webkit-scrollbar-thumb {
+    background: #999999; 
+    border-radius: 20px;
+  }
+  
+  #filter::-webkit-scrollbar-thumb:hover {
+    background: #999999; 
+  }
 
 
 
@@ -460,11 +488,13 @@ span {
     margin:10px 0 10px 0;
 }
 .selected {
-    padding: 10px;
     display: flex;
     justify-content: space-between;
+    width:100%;
+    
 }
 .selected:hover {
+    background-color: #F5F5F5;
     cursor: pointer;
 }
 
@@ -491,6 +521,25 @@ input:focus {
 }
 
 
+input:checked ~ span {
+    color:#000;
+    font-weight: bold;
+}
+#rezultati {
+    margin-bottom: 25px;
+    margin-left: 25px;
+}
+.img-arrow{
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+.selected p{
+    margin: 15px 30px;
+}
+
+
+
 
 /*----------styling radio buttons------------*/
 
@@ -505,13 +554,8 @@ input:focus {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin: 0;
-    
-    
-    
-   
   }
-  
+
   .container-radio input {
     position: absolute;
     opacity: 0;
@@ -527,7 +571,7 @@ input:focus {
     width: 20px;
     background-color: #FFF;
     border-radius: 50%;
-    border:solid 2px rgba(1,1,1,0.54);
+    border:solid 3px rgba(1,1,1,0.54);
     
   }
   
@@ -538,29 +582,54 @@ input:focus {
     background-color: #FFF;
     border-color:#3EC300;
   }
+
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+  input[type="radio"]:checked+label{ font-weight: bold; } 
 
   .container-radio input:checked ~ .checkmark:after {
     display: block;
   }
   
   .container-radio .checkmark:after {
-    top: 10%;
-    left: 10%;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #3EC300;
+    
+        top: 3px;
+        left: 3px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #3EC300;
+      
   }
 
 
   /*----------styling submit------------*/
- 
+  #button-submit {
+    background: url("../img/ic_arrow_forward_24px\ \(1\).svg") 140px center   no-repeat;
+    background-color:  #D1D1D1 ;
+    color:#FFF;
+    font-size: 20px !important;
+    text-align: center;
+    border-radius: 33px;
+    width:230px;
+    height: 61px;
+    margin: 20px auto;
+    font-size: 16px;
+    font-weight: 600;
+    border:none;
+    cursor: pointer;
+    display:block;
+    margin-bottom: 5rem;
+    padding-right: 22px;
+}
+/*
+form:valid #button-submit {
+    background-color: #3EC300;
+    box-shadow: 0px 10px 20px #3EC30080;
+}*/
 
 
  
@@ -570,7 +639,7 @@ input:focus {
         width:80%;
     }
     #dropcon2{
-        width:80%;
+        width:82vw;
     }
     #filter {
         width: 80%;
@@ -578,6 +647,12 @@ input:focus {
  #article{
             width:90%;
         }
+}
+@media screen and (max-width: 414px) {
+    #dropcon2{
+        width:90vw;
+    }
+
 }
 
 
@@ -600,34 +675,40 @@ input:focus {
     margin:0 auto;
     position:absolute;
     width:100%;
-
+    bottom:0px;
+    
+    
 }
 .footer-list{
     width: 630px;
     margin:0 auto;
     text-align: center;
 }
+
 .broj{
     display: inline-block;
-    background-color: #888888;
-    color:#fff;
+    color: #FFF;
+    background-color: #8888;
     border-radius: 50%;
-    height:30px;
+    height:27px;
     width:30px;
     margin:25px 10px;
     padding:0;
-    font-weight: 300; 
+    font-weight: 300;
+
 }
-.footer-list :first-child {
-     background-color: #FFF200;
-     color:#000;
+.broj p{
+    margin:26px 10px;
+    padding-top: 2px;
+    font-weight: 700;
+    font-size: 15px;
+
 }
-.footer-list :nth-child(4) {
+
+#active{
     background-color: #FFF200;
-    color:#000;
-
+    color: #000;
 }
-
 .footer-list p{
     color:#FFF;
     display: inline-block;
@@ -640,7 +721,7 @@ input:focus {
     height: 10px;
     margin-bottom: 5px;
     margin-left: 5px;
-    display:inline-block;
+    display: inline-block;
 }
 
 @media screen and (max-width: 768px) {
@@ -667,4 +748,5 @@ input:focus {
         padding-right:10px;
         line-height: 1.2;
     }
+    
 }

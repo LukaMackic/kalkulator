@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import model.Model_doo;
 import static model.Model_doo.selectPodrucjeDOO;
 import static model.Model_doo.selectSifraDOO;
+import model.Model_rezultati;
 import model.Model_sp;
 import static model.Model_sp.selectPodrucjeSP;
+import static model.Model_sp.selectSifraSP;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -126,7 +128,8 @@ public class MainController {
                                     @RequestParam("plate") String plate,
                                     @RequestParam("djelatnost") String djelatnost,
                                     @RequestParam("check") String prihodi,
-                                    @RequestParam("oblik") String oblik)
+                                    @RequestParam("oblik") String oblik,
+                                    @RequestParam("obavljase") String obavljase)
      {
        ModelAndView model = new ModelAndView("novaVerzija/pages/rezultati");
        // oblik registracije
@@ -137,7 +140,7 @@ public class MainController {
          else{
              model.addObject("oblik","Samostalni preduzetnik (S.P.)");
          }
-          //broj zaposlenih
+         //broj zaposlenih
          model.addObject("brojZaposlenih", String.valueOf(plate.split("#").length));
          //djelatnost 
         char sifra[] = djelatnost.toCharArray();
@@ -150,9 +153,15 @@ public class MainController {
               
             j--;
         }
-         ArrayList<Model_doo> posifri = selectSifraDOO(new StringBuilder(sifra_djelatnosti).reverse().toString());
-         model.addObject("djelatnost",posifri.get(0).getOpis_djelatnosti()+" ("+ posifri.get(0).getSifra()+")" );
-
+        ArrayList<Model_doo> posifri=null;
+        ArrayList<Model_sp> posifrisp= null;
+        if(oblik.equals("doo")){
+        posifri = selectSifraDOO(new StringBuilder(sifra_djelatnosti).reverse().toString());
+        model.addObject("djelatnost",posifri.get(0).getOpis_djelatnosti()+" ("+ posifri.get(0).getSifra()+")" );
+        }else{
+        posifrisp = selectSifraSP(new StringBuilder(sifra_djelatnosti).reverse().toString());
+        model.addObject("djelatnost",posifrisp.get(0).getOpis()+" ("+ posifrisp.get(0).getSifra()+")");
+        }
          //radnici 
               
              
@@ -167,7 +176,7 @@ public class MainController {
                   brutoplata = brutoplata.concat("#");
               } 
               String brutoplate[] = brutoplata.split("#");
-              //doprinosi i licni dohodak
+           //doprinosi i licni dohodak
               String doprinosi ="";
               String licnidohodak = "";
               for(int i=0;i<brutoplate.length;i++)
@@ -190,19 +199,25 @@ public class MainController {
         {
            ukupneplate += Double.parseDouble(brutoplate[i]);
         }
-         model.addObject("ukupneplate",String.valueOf(ukupneplate));
+         String result = String.format("%.2f", ukupneplate);
+         model.addObject("ukupneplate",String.valueOf(result));
          model.addObject("netoplate",plate);
          model.addObject("doprinosi",doprinosi);
          model.addObject("poreziLD",licnidohodak);
          model.addObject("brutoplate",brutoplata);
          
          // MJESECNI TROSKOVI
+         //doo
             //komunalna taksa
+            if(oblik.equals("doo")){
             String komunalna = posifri.get(0).getIznos_komunalne_takse();
            komunalna = komunalna.concat(" KM");
         model.addObject("komunalna",komunalna);
+            }
          //klasifikacija pravnog lica i republicka taksa 
-             String grupa = String.valueOf(posifri.get(0).getGrupa_id());
+            if(oblik.equals("doo"))
+            {
+         String grupa = String.valueOf(posifri.get(0).getGrupa_id());
              String republicka="";
          if(oblik.equals("doo"))
          {
@@ -223,8 +238,30 @@ public class MainController {
               model.addObject("republicka",republicka);
               
          }
-         
-  
+            }
+            //SP
+            if(oblik.equals("sp"))
+            {
+              if(prihodi.equals("do50k"))  model.addObject("prihodi","do 50.000 KM");
+              else model.addObject("prihodi","preko 50.000 KM");
+              
+             model.addObject("komunalna", posifrisp.get(0).getIznos_komunalne_takse()+" KM");
+             model.addObject("republicka",posifrisp.get(0).getIznos_republicke_takse()+" KM") ;
+              
+              
+            }
+      model.addObject("obavljase",obavljase);
+      /////////////////////////////////////// rezultati u bazu
+      Model_rezultati rezultati = new Model_rezultati();
+      if(oblik.equals("doo")){ rezultati.setDjelatnost(posifri.get(0).getOpis_djelatnosti()); rezultati.setOblik("DOO");}
+      else {rezultati.setDjelatnost(posifrisp.get(0).getOpis()); rezultati.setOblik("SP");}
+      rezultati.setPrihodi(prihodi);
+      rezultati.setZaposleni(String.valueOf(plate.split("#").length)+"-"+plate);
+      rezultati.createRezultati();
+     
+      
+     
+      
       return model; 
      }
      
@@ -308,16 +345,22 @@ public class MainController {
       @RequestMapping(value="/prihodiSP.htm" , method = RequestMethod.POST)
      public ModelAndView prihodiSP(@RequestParam("radnoVrijeme") String radnovrijeme,
                                    @RequestParam("plate") String plate,
-                                   @RequestParam("djelatnost") String djelatnost)
+                                   @RequestParam("djelatnost") String djelatnost,
+                                   @RequestParam("opcija") String opcija)                      
      {
        ModelAndView model = new ModelAndView("novaVerzija/pages/S.P/prihodisp");
        model.addObject("radnoVrijeme",radnovrijeme);
        model.addObject("plate",plate);
        model.addObject("djelatnost" ,djelatnost);
+       model.addObject("opcija",opcija);
+      
  
       return model; 
      }
 
+   
+    
+     
      
 }
 

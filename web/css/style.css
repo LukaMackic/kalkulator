@@ -12,7 +12,7 @@ body {
 }
 @font-face{
     font-family: HelveticaNeue;
-    src: url('../fonts/Helvetica_Neue/HelveticaNeue.otf');
+    src: url('../fonts/Helvetica_Neue/HelveticaNeue.otf')
 
 }
 
@@ -35,7 +35,7 @@ body {
 }
 
 nav {
-    display: flex;
+    display: inline-flex;
     justify-content: space-around;
     align-items: center;
     min-height: 90px;
@@ -58,7 +58,7 @@ nav ul li a {
     color: #aaa;
     font-weight: 600;
     text-transform: uppercase;
-    margin: 0 25px;
+    margin: 0 10px;
     white-space: nowrap;
 
 
@@ -160,11 +160,21 @@ nav ul li a {
     color: #000000;
     opacity: 1;
     text-transform: lowercase !important;
-    width: 200px;
+    width: 220px;
     font-weight: 300;
     border-radius: 29px;
 
 
+}
+#slink {
+    width: 220px;
+    margin-right: 10px;
+}
+#slink a {
+    padding:10px 0px;
+}
+li {
+	list-style: none;
 }
 
 .navbutton:after {
@@ -173,12 +183,13 @@ nav ul li a {
     display: inline-block;
     height: 2px;
     line-height: 25px;
-    margin-left: 10px;
     text-align: center;
     width: 25px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
+
+
 }
 
 .navbutton:hover {
@@ -204,26 +215,23 @@ nav ul li a {
     white-space: nowrap;
 }
 
-span {
+nav span {
     display: inline-block;
     width: 0;
     height: 34px;
     border-right: 1px solid #ccc;
 }
 
-.menu :nth-child(4) img {
-    margin-left: 10px;
-}
 
-.menu :nth-child(4) {
-    margin: 0 auto;
-}
 
-.menu :nth-child(4) ::after {
-    display: none;
-}
 
 /* Begin Media Queries */
+@media screen and (min-width: 2000px){
+    #coat {
+        background-size: 37%;
+    } 
+}
+
 @media(max-width: 1024px) {
 
     .menu {
@@ -247,7 +255,7 @@ span {
 
     .navbutton {
         font-size: 14px !important;
-        width: 170px;
+        
     }
 
     .menu {
@@ -282,7 +290,9 @@ span {
     .nav-active {
         transform: translateX(0%);
     }
-
+    #slink {
+        margin-right: 10px;
+    }
 }
 
 @media(max-width: 900px) {
@@ -324,6 +334,9 @@ span {
     .navbutton {
         border: 1px solid black;
 
+    }
+    nav span {
+        display:none;
     }
 
 }
@@ -375,7 +388,7 @@ span {
     background-image: url("../img/Group_854.svg");
     background-repeat: no-repeat;
     background-position: right bottom;
-    background-size: 58%;
+    background-size: 54%;
     margin-right: -5px;
     
 }
@@ -447,7 +460,7 @@ span {
         background-position: center top;
         background-size: 65%;
         padding-top: 370px;
-        margin-top: 5rem;
+        margin-top: 7rem;
        
         }
     #coat {

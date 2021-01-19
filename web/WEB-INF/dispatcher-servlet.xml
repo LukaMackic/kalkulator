@@ -31,13 +31,13 @@
 
                  <prop key="oblik.htm">mainController</prop>
                  <prop key="oblikRegistracije.htm">mainController</prop>
-                 <prop key="djelatnostiDOO.htm.htm">mainController</prop>
-                 <prop key="djelatnosti.htm">mainController</prop>
-               <prop key="djelatnostiDOO.htm.htm">mainController</prop>
+                 
+                 <prop key="djelatnosti.htm">mainController</prop>       
                  <prop key="zaposleniDOO.htm">mainController</prop>
                  <prop key="workersdoo.htm">mainController</prop>
-              <prop key="prihodiDOO.htm">mainController</prop>
+                 <prop key="prihodiDOO.htm">mainController</prop>
                  <prop key="prihodidoo.htm">mainController</prop>
+                 <prop key="prihodiSP.htm">mainController</prop>
                   <prop key="pregled.htm">mainController</prop>
                 
                 <prop key="index.htm">indexController</prop>
